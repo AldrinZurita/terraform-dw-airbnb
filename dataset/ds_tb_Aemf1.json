@@ -1,0 +1,60 @@
+{
+	"name": "ds_tb_Aemf1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_sql_db_airbnb",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DB"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "City",
+				"type": "varchar"
+			},
+			{
+				"name": "Price",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "Room_Type",
+				"type": "varchar"
+			},
+			{
+				"name": "Capacity",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Bedrooms",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Superhost",
+				"type": "bit"
+			},
+			{
+				"name": "Rating",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 2
+			},
+			{
+				"name": "Guest_Satisfaction",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "STG_AEMF1"
+		}
+	}
+}

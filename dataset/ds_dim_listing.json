@@ -1,0 +1,58 @@
+{
+	"name": "ds_dim_listing",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_sql_dw_airbnb",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DW"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "listing_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "price",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "rating",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 2
+			},
+			{
+				"name": "guest_satisfaction",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 2
+			},
+			{
+				"name": "city_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "room_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "property_id",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "HECHOS_LISTING"
+		}
+	}
+}

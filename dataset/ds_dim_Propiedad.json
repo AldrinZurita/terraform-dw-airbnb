@@ -1,0 +1,39 @@
+{
+	"name": "ds_dim_Propiedad",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_sql_dw_airbnb",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DW"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "property_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "capacity",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "bedrooms",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "superhost",
+				"type": "bit"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DIM_PROPIEDAD"
+		}
+	}
+}
