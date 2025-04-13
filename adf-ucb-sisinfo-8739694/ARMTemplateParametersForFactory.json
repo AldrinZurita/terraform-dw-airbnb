@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-ucb-sisinfo-8739694"
+		},
+		"ls_sa_airbnb_csv_connectionString": {
+			"value": ""
+		},
+		"ls_sql_db_airbnb_password": {
+			"value": ""
+		},
+		"ls_sql_dw_airbnb_password": {
+			"value": ""
+		},
+		"ls_sql_db_airbnb_properties_typeProperties_server": {
+			"value": "sql-ucb-sisinfo-8739694.database.windows.net"
+		},
+		"ls_sql_db_airbnb_properties_typeProperties_database": {
+			"value": "db_airbnb_europe"
+		},
+		"ls_sql_db_airbnb_properties_typeProperties_userName": {
+			"value": "aldrin"
+		},
+		"ls_sql_dw_airbnb_properties_typeProperties_server": {
+			"value": "sql-ucb-sisinfo-8739694.database.windows.net"
+		},
+		"ls_sql_dw_airbnb_properties_typeProperties_database": {
+			"value": "dw_airbnb_europe"
+		},
+		"ls_sql_dw_airbnb_properties_typeProperties_userName": {
+			"value": "aldrin"
+		}
+	}
+}

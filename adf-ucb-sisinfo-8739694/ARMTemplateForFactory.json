@@ -1,0 +1,109 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Nombre de instancia de Data Factory",
+			"defaultValue": "adf-ucb-sisinfo-8739694"
+		},
+		"ls_sa_airbnb_csv_connectionString": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"connectionString\"de \"ls_sa_airbnb_csv\""
+		},
+		"ls_sql_db_airbnb_password": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"password\"de \"ls_sql_db_airbnb\""
+		},
+		"ls_sql_dw_airbnb_password": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"password\"de \"ls_sql_dw_airbnb\""
+		},
+		"ls_sql_db_airbnb_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-ucb-sisinfo-8739694.database.windows.net"
+		},
+		"ls_sql_db_airbnb_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "db_airbnb_europe"
+		},
+		"ls_sql_db_airbnb_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "aldrin"
+		},
+		"ls_sql_dw_airbnb_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-ucb-sisinfo-8739694.database.windows.net"
+		},
+		"ls_sql_dw_airbnb_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "dw_airbnb_europe"
+		},
+		"ls_sql_dw_airbnb_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "aldrin"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_sa_airbnb_csv')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls_sa_airbnb_csv_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_sql_db_airbnb')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"server": "[parameters('ls_sql_db_airbnb_properties_typeProperties_server')]",
+					"database": "[parameters('ls_sql_db_airbnb_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": false,
+					"authenticationType": "SQL",
+					"userName": "[parameters('ls_sql_db_airbnb_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('ls_sql_db_airbnb_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_sql_dw_airbnb')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"server": "[parameters('ls_sql_dw_airbnb_properties_typeProperties_server')]",
+					"database": "[parameters('ls_sql_dw_airbnb_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": false,
+					"authenticationType": "SQL",
+					"userName": "[parameters('ls_sql_dw_airbnb_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('ls_sql_dw_airbnb_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
