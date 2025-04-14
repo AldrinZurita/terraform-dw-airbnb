@@ -1,0 +1,39 @@
+{
+	"name": "dw_dim_cuidad",
+	"properties": {
+		"folder": {
+			"name": "DW"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_tb_Aemf1",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          City as string,",
+				"          Price as decimal(10,2),",
+				"          Room_Type as string,",
+				"          Capacity as integer,",
+				"          Bedrooms as integer,",
+				"          Superhost as boolean,",
+				"          Rating as decimal(5,2),",
+				"          Guest_Satisfaction as decimal(5,2)",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     query: 'Select distinct City from [dbo].[tbl_Aemf1]',",
+				"     format: 'query') ~> source1"
+			]
+		}
+	}
+}

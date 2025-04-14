@@ -1,6 +1,9 @@
 {
 	"name": "dw_db_Aemf1",
 	"properties": {
+		"folder": {
+			"name": "DB"
+		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
