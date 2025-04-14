@@ -27,6 +27,9 @@
 			"transformations": [
 				{
 					"name": "sort1"
+				},
+				{
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -36,10 +39,13 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     query: 'Select distinct Room_Type from [dbo].[STG_AEMF1]',",
+				"     query: 'Select distinct UPPER(Room_Type) as room_type, Descripcion from [dbo].[STG_AEMF1]',",
 				"     format: 'query') ~> source1",
 				"source1 sort(asc(Room_Type, true)) ~> sort1",
-				"sort1 sink(allowSchemaDrift: true,",
+				"sort1 aggregate(groupBy(Room_Type,",
+				"          Room_Type),",
+				"     each(match(name != 'Room_Type'), $$ = first($$))) ~> aggregate1",
+				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          room_id as integer,",
