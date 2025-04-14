@@ -18,7 +18,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "ds_tbl_Base",
+						"referenceName": "ds_tbl_Aemf1",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"

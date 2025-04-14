@@ -1,5 +1,5 @@
 {
-	"name": "dw_dim_cuidad",
+	"name": "dw_dim_Propiedad",
 	"properties": {
 		"folder": {
 			"name": "DW"
@@ -18,7 +18,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "ds_dim_cuidad",
+						"referenceName": "ds_dim_Propiedad",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -26,31 +26,28 @@
 			],
 			"transformations": [
 				{
-					"name": "cast1"
-				},
-				{
 					"name": "sort1"
 				}
 			],
 			"scriptLines": [
 				"source(output(",
-				"          City as string",
+				"          Capacity as integer,",
+				"          Bedrooms as integer,",
+				"          Superhost as boolean",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     query: 'Select distinct City from [dbo].[STG_AEMF1]',",
+				"     query: 'Select distinct Capacity,Bedrooms,Superhost from [dbo].[STG_AEMF1]',",
 				"     format: 'query') ~> source1",
-				"source1 cast(output(",
-				"          City as string",
-				"     ),",
-				"     errors: true) ~> cast1",
-				"cast1 sort(asc(City, true)) ~> sort1",
+				"source1 sort(asc(Capacity, true)) ~> sort1",
 				"sort1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
-				"          city_id as integer,",
-				"          city_name as string",
+				"          property_id as integer,",
+				"          capacity as integer,",
+				"          bedrooms as integer,",
+				"          superhost as boolean",
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -61,7 +58,9 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          city_name = City",
+				"          capacity = Capacity,",
+				"          bedrooms = Bedrooms,",
+				"          superhost = Superhost",
 				"     )) ~> sink1"
 			]
 		}

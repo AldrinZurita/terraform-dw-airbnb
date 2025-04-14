@@ -1,5 +1,5 @@
 {
-	"name": "ds_tbl_Base",
+	"name": "ds_tbl_Aemf1",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_sql_db_airbnb",
