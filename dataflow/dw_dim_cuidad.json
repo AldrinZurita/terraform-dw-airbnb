@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "ds_tb_Aemf1",
+						"referenceName": "ds_tbl_Aemf1",
 						"type": "DatasetReference"
 					},
 					"name": "source1"
